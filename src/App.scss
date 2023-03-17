@@ -1,0 +1,302 @@
+$container: 1280px;
+$white:#FFFFFF;
+$black: #000000;
+$gray: #7c7c7c;
+$gray-black: #4e4e4e;
+$gray-active: #e7e7e7;
+$green: rgb(99, 165, 99);
+$red: rgb(204, 85, 55);
+$blue: rgb(80, 90, 228);
+$white-bg: rgba(252, 252, 252, 1);
+$transition: 0.4s;
+$shadow: rgba(99, 99, 99, 0.6) 0px 2px 8px 0px;
+$nato: 'Noto Sans',
+sans-serif;
+body {
+    color: $gray-black;
+    background-color: $white-bg;
+    font-family: $nato;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin flex($jc, $ai) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    box-shadow: $shadow;
+    color: $black;
+    margin-bottom: 20px;
+    transition: 0.4s;
+    &:hover {
+        background-color: $gray-active;
+    }
+    &::placeholder {
+        color: $gray
+    }
+}
+
+@mixin button {
+    width: 40%;
+    padding: 15px 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    box-shadow: $shadow;
+    background-color: $white;
+    color: $gray;
+    transition: 0.4s;
+    cursor: pointer;
+    &:hover {
+        background-color: $gray-active;
+        color: $black;
+    }
+}
+
+li::marker {
+    color: $gray;
+}
+
+.wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: $container;
+    margin: 0 auto;
+    padding: 0 40px;
+    // outline: 1px solid red;
+}
+
+.login-form {
+    @include flex(center, center);
+    flex-direction: column;
+    width: 500px;
+    padding: 40px 60px;
+    box-shadow: $shadow;
+    border-radius: 20px;
+    background-color: $white;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -100%);
+    input {
+        @include input()
+    }
+    button {
+        @include button()
+    }
+}
+
+.add-item-form {
+    @include flex(center, center);
+    flex-direction: column;
+    width: 100%;
+    padding: 40px 60px;
+    // box-shadow: $shadow;
+    border-radius: 20px;
+    // background-color: $white;
+    input {
+        @include input()
+    }
+    button {
+        @include button()
+    }
+}
+
+.data-form {
+    @include flex(center, flex-start);
+    flex-direction: column;
+    width: calc(50% - 20px);
+    padding: 40px 60px;
+    box-shadow: $shadow;
+    border-radius: 20px;
+    background-color: $white;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    color: $gray;
+    transition: 0.4s;
+    &:hover {
+        color: $red;
+    }
+}
+
+.pen {
+    right: 50px;
+    &:hover {
+        color: $blue;
+    }
+}
+
+.table {
+    width: 100%;
+    margin-top: 100px;
+    @include flex(space-between, center);
+    &__preview {
+        margin: 0 auto;
+        width: 60%;
+        height: 60px;
+        margin-bottom: 40px;
+        box-shadow: $shadow;
+        background-color: $white;
+        border-radius: 20px;
+        @include flex(space-between, center);
+        padding: 0 20px;
+        p {
+            color: $gray-active;
+        }
+    }
+}
+
+.table__preview-icon {
+    height: 30px;
+    color: gray;
+    transition: 0.4s;
+    cursor: pointer;
+    &:hover {
+        color: $green;
+    }
+}
+
+.modal {
+    width: 35%;
+    height: auto;
+    background-color: $white-bg;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    border-radius: 20px;
+    &__icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: $gray;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.alert-enter {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.alert-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.alert-exit {
+    opacity: 1;
+}
+
+.alert-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.error-message {
+    color: $red;
+    position: absolute;
+    bottom: 5px;
+}
+
+.loader {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    color: $gray;
+    font-size: 26px;
+    height: 150px;
+    @include flex(center, center);
+    flex-direction: column;
+    &__spin {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .table {
+        &__preview {
+            p {
+                display: none;
+            }
+            justify-content: flex-end;
+        }
+        flex-direction: column;
+    }
+    .data-form {
+        width: auto;
+    }
+    .login-form {
+        width: 50%;
+        transform: translate(50%, -50%);
+    }
+    .modal {
+        width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+    .login-form {
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .data-form {
+        padding: 40px 10px;
+        font-size: 14px;
+    }
+    .table {
+        margin-top: 20px;
+    }
+    .modal {
+        font-size: 14px;
+        width: 90%;
+        input {
+            padding: 5px 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        overflow-y: auto;
+    }
+}
