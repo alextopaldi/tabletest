@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 const store = setupStore()
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/tabletest'>
     <Provider store={store}>
       <App />
     </Provider>
