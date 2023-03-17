@@ -79,7 +79,7 @@ export function AddItem({onClose} : AddItemProps) {
             {errorDate && <p className="error-message">Введите корректную дату!</p>}
             {error && <p className="error-message">Ошибка отправки данных!</p>}
             <button disabled={loader}>
-                {!loader && <p>Save</p>}
+                {!loader && <p>Добавить</p>}
                 {loader && <FontAwesomeIcon className="animate-spin" icon={faCircleNotch}/>}
             </button>
         </form>

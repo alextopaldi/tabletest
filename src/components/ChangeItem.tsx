@@ -82,7 +82,7 @@ export function ChangeItem({onClose} : ChangeItemProps) {
             <input onClick={() => setErrorDate(false)} required value={addValues.employeeSigDate} onChange={event => setAddValues(prev => ({...prev, employeeSigDate: event.target.value}))} type="text" onFocus={(e) => (e.currentTarget.type = 'datetime-local')} placeholder="Employee Signature Date..." />
             <input required value={addValues.employeeSignatureName} onChange={event => setAddValues(prev => ({...prev, employeeSignatureName: event.target.value}))} type="text" placeholder="Employee Signature Name..." />
             <button disabled={loader}>
-                {!loader && <p>Save</p>}
+                {!loader && <p>Сохранить</p>}
                 {loader && <FontAwesomeIcon className="animate-spin" icon={faCircleNotch}/>}
             </button>
             {errorDate && <p className="error-message">Введите корректную дату!</p>}
